@@ -1,6 +1,8 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var models = require('./models/models');
+var promise = require('promise')
+
 var app = express();
 
 
@@ -30,7 +32,7 @@ mongoose.connect('mongodb://localhost/bdcol-bd', function(err) {
 	  		throw err; 
 	  	}
 
-	  	res.setHeader('Content-Type', 'application/json');
+	  	res.status(200).setHeader('Content-Type', 'application/json');
 	  	res.send(JSON.stringify(albums));
 
 	  });
@@ -56,8 +58,20 @@ mongoose.connect('mongodb://localhost/bdcol-bd', function(err) {
 	  		throw err; 
 	  	}
 
-	  	res.setHeader('Content-Type', 'application/json');
-	  	res.send(JSON.stringify(album));
+        if (album)
+        {
+            res.status(200);
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(album));
+        }
+        else
+        {
+            res.status(404);
+            res.send();
+            
+        }
+	  	
+	  	
 
 	  });
 	})

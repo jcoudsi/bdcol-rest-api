@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "express": "~4.10.6",
-    "mongoose": "^3.8.21"
+    "mongoose": "^3.8.21",
+    "promise": "^6.1.0"
   }
 }
