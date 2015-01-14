@@ -1,23 +1,12 @@
 {
-  "name": "bdcol-rest-api",
-  "version": "1.0.0",
-  "description": "Node.js REST API for BDCol Android application",
-  "main": "index.js",
+  "name": "bdcolrestapi",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jcoudsi/bdcol-rest-api.git"
-  },
-  "author": "Julien Coudsi",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jcoudsi/bdcol-rest-api/issues"
-  },
-  "homepage": "https://github.com/jcoudsi/bdcol-rest-api",
   "dependencies": {
-    "express": "^4.11.0",
+    "express": "~4.10.6",
     "mongoose": "^3.8.21"
   }
 }
