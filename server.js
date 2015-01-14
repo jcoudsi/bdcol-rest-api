@@ -32,8 +32,18 @@ mongoose.connect('mongodb://localhost/bdcol-bd', function(err) {
 	  		throw err; 
 	  	}
 
-	  	res.status(200).setHeader('Content-Type', 'application/json');
-	  	res.send(JSON.stringify(albums));
+	  	if (albums)
+        {
+            res.status(200);
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(albums));
+        }
+        else
+        {
+            res.status(404);
+            res.send();
+            
+        }
 
 	  });
 
@@ -70,8 +80,6 @@ mongoose.connect('mongodb://localhost/bdcol-bd', function(err) {
             res.send();
             
         }
-	  	
-	  	
 
 	  });
 	})
