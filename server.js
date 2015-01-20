@@ -17,17 +17,19 @@ var server = app.listen(8080, function () {
 });
 
 mongoose.connect('mongodb://localhost/bdcol-bd', function(err) {
-  	if (err) 
+  	
+    if (err) 
   	{ 
   		throw err; 
   	}
 
   	console.log('Database started successfully');
 
+    //Application des routeurs
+    app.use('/', generalRouter.router);
+    app.use('/series', seriesRouter.router);
+    app.use('/albums', albumsRouter.router);
 
-  //Application des routeurs
-  app.use('/', generalRouter.router);
-  app.use('/series', seriesRouter.router);
-  app.use('/albums', albumsRouter.router);
+    console.log('Ready to manage routes');
 
 });
