@@ -3,8 +3,6 @@ var router = express.Router();
 var models = require('.././models/models');
 
 router.get('/', function(req, res) {
-  res.setHeader('Content-Type', 'application/json');
-
   models.Album.find(null, function (err, albums) {
 		  
 		if (err) 
@@ -27,22 +25,16 @@ router.get('/', function(req, res) {
         }
 
 	  });
-
-
-
-  //res.send('Liste des albums');
 });
 
 
 router.post('/', function(req, res) {
-  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-Type', 'text/plain');
   res.send('Ajout d\'un album');
 });
 
 
 router.get('/:idAlbum', function(req, res) {
-  res.setHeader('Content-Type', 'application/json');
-
 	models.Album.findOne({_id:req.params.idAlbum}, function (err, album) {
 			  
 		if (err) 
@@ -69,7 +61,7 @@ router.get('/:idAlbum', function(req, res) {
 
 
 router.put('/:idAlbum', function(req, res) {
-  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-Type', 'text/plain');
   res.send('Mise à jour de l\'album N°' + req.params.idAlbum);
 });
 
