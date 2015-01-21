@@ -23,7 +23,7 @@ router.get('/:idAlbum', function(req, res) {
 
 router.post('/', function(req, res) {
 
-  controller.addAlbum(req, function(error) {
+  controller.addAlbum(req, function(error, result) {
   	  if (error)
   	  {
   	  	  res.send(500, error)
@@ -31,7 +31,7 @@ router.post('/', function(req, res) {
   	  else
   	  {
   	  	  res.setHeader('Content-Type', 'application/json');
-  	  	  res.send();
+  	  	  res.send(result);
   	  }
 
   });

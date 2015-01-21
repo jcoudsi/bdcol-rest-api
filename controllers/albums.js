@@ -54,7 +54,7 @@ var findAlbum = function(idAlbum, callback)
 var addAlbum = function(req, callback)
 {
 	models.Album.create(req.body, function (error) {		  
-        callback(error);
+        callback(error, req.body);
 	  });
 };
 
