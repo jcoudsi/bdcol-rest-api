@@ -1,64 +1,42 @@
 var express = require('express');
 var router = express.Router();
 var models = require('.././models/models');
+var controller = require('.././controllers/albums');
 
 router.get('/', function(req, res) {
-  models.Album.find(null, function (err, albums) {
-		  
-		if (err) 
-	  	{ 
-	  		throw err; 
-	  	}
 
-	  	if (albums)
-        {
-            res.status(200);
-            res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(albums));
-        }
-        else
-        {
-            res.status(404);
-            res.setHeader('Content-Type', 'text/plain');
-            res.send('Not found');
-            
-        }
+	controller.findAllAlbums(function(result) {
+		res.setHeader('Content-Type', 'application/json');
+		res.send(result);
+	});
 
-	  });
+});
+
+router.get('/:idAlbum', function(req, res) {
+
+	controller.findAlbum(req.params.idAlbum, function(result) {
+		res.setHeader('Content-Type', 'application/json');
+		res.send(result);
+	});
 });
 
 
 router.post('/', function(req, res) {
-  res.setHeader('Content-Type', 'text/plain');
-  res.send('Ajout d\'un album');
-});
 
-
-router.get('/:idAlbum', function(req, res) {
-	models.Album.findOne({_id:req.params.idAlbum}, function (err, album) {
-			  
-		if (err) 
-	  	{ 
-	  		throw err; 
-	  	}
-
-	    if (album)
-	    {
-	        res.status(200);
-	        res.setHeader('Content-Type', 'application/json');
-	        res.send(JSON.stringify(album));
-	    }
-	    else
-	    {
-	        res.status(404);
-	        res.setHeader('Content-Type', 'text/plain');
-	        res.send('Not found');
-	        
-	    }
+  controller.addAlbum(req, function(error) {
+  	  if (error)
+  	  {
+  	  	  res.send(500, error)
+  	  }
+  	  else
+  	  {
+  	  	  res.setHeader('Content-Type', 'application/json');
+  	  	  res.send();
+  	  }
 
   });
-});
 
+});
 
 router.put('/:idAlbum', function(req, res) {
   res.setHeader('Content-Type', 'text/plain');

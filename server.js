@@ -4,6 +4,7 @@ var models = require('./models/models');
 var generalRouter = require('./routes/general');
 var seriesRouter = require('./routes/series');
 var albumsRouter = require('./routes/albums');
+var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -24,6 +25,8 @@ mongoose.connect('mongodb://localhost/bdcol-bd', function(err) {
   	}
 
   	console.log('Database started successfully');
+
+    app.use(bodyParser.json());
 
     //Application des routeurs
     app.use('/', generalRouter.router);

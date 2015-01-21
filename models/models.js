@@ -7,7 +7,8 @@ var albumsSchema = new mongoose.Schema({
 	  titre : { 
 	  	type : String 
 	  },
-	});
+	},
+	{ versionKey: false });
 
 var Album = mongoose.model('albums', albumsSchema);
 
