@@ -53,7 +53,7 @@ router.get('/:idAlbum', function(req, res, next) {
 router.post('/', function(req, res, next) {
 
   controller.addAlbum(req, function(err, result) {
-  	  
+
       if (err)
   	  {
   	  	  next(err);
@@ -67,6 +67,7 @@ router.post('/', function(req, res, next) {
   });
 
 });
+
 
 router.put('/:idAlbum', function(req, res, next) {
   res.setHeader('Content-Type', 'text/plain');

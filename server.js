@@ -49,12 +49,12 @@ mongoose.connection.on('connected', function () {
 
       if (err instanceof error.NotFound)
       {
-          res.status(404).
+          res.status(404);
           res.send('Ooops ! Not found !');
       }
       else
       {
-          res.status(500).
+          res.status(500);
           res.send('Ooops ! Something is broken :/');
       }
 
