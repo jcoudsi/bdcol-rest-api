@@ -1,6 +1,7 @@
 exports.models = {
     "Album":{
       "id":"Album",
+      "required": ["id", "titre"],
       "properties":{
         "id":{
           "type":"integer",

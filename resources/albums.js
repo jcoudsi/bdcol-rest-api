@@ -1,6 +1,5 @@
 var controller = require('.././controllers/albums');
 
-// the description will be picked up in the resource listing
 exports.findAllAlbums = {
   'spec': {
     description : "Operations sur les albums",  
@@ -13,7 +12,7 @@ exports.findAllAlbums = {
     produces : ["application/json"],
     responseMessages : ["test"]
   },
-  'action': function (req,res) {
+  'action': function (req,res, next) {
 
     var pet = controller.findAllAlbums(function(err, result) {
 

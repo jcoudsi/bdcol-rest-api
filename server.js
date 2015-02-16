@@ -37,8 +37,6 @@ mongoose.connection.on('connected', function () {
     // Couple the application to the Swagger module. 
     swagger.setAppHandler(app);
 
-    console.log(swaggerModels);
-
     // Add models and methods to swagger
     swagger.addModels(swaggerModels)
       .addGet(resources.findAllAlbums);
@@ -97,7 +95,7 @@ mongoose.connection.on('connected', function () {
     //Application des routeurs
     app.use('/', generalRouter.router);
     app.use('/series', seriesRouter.router);
-    app.use('/albums', albumsRouter.router);
+    //app.use('/albums', albumsRouter.router);
 
     //Cas où la requête n'existe pas : on a essayé tous les routeurs et on arrive dans ce middleware
     app.use(function(req, res) {
