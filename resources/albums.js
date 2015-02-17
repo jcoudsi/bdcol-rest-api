@@ -14,7 +14,7 @@ exports.findAllAlbums = {
   },
   'action': function (req,res, next) {
 
-    var pet = controller.findAllAlbums(function(err, result) {
+    var album = controller.findAllAlbums(function(err, result) {
 
     if (err)
     {
